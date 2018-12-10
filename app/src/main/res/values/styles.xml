@@ -1,0 +1,64 @@
+<resources>
+
+    <style name="Theme.reader_for_reddit" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- https://stackoverflow.com/questions/10243557/how-to-apply-slide-animation-between-two-activities-in-android -->
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+    </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_left</item>
+    </style>
+
+    <style name="Theme.reader_for_reddit.detail">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- style/s for submission text -->
+    <style name="submission_text">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body2</item>    <!-- Seems to be more 'bold' than Body1 -->
+
+        <item name="android:paddingTop">@dimen/padding_topBottom</item>
+        <item name="android:paddingBottom">@dimen/padding_topBottom</item>
+        <item name="android:paddingStart">@dimen/padding_startEnd</item>
+        <item name="android:paddingEnd">@dimen/padding_startEnd</item>
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:ellipsize">end</item>-->
+    </style>
+
+    <style name="submission_text.title">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+    </style>
+
+    <style name="submission_text.supplementary">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/offWhite</item>
+        <item name="android:paddingStart">@dimen/padding_startEnd_recessed</item>
+        <item name="android:paddingEnd">@dimen/padding_startEnd_recessed</item>
+    </style>
+
+    <style name="submission_text.link">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="comment_text">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/offWhite</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="comment_text.supplementary">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="android:textColor">@color/furtherOffWhite</item>
+        <item name="android:paddingEnd">@dimen/padding_comment_supplementary</item>
+    </style>
+
+</resources>

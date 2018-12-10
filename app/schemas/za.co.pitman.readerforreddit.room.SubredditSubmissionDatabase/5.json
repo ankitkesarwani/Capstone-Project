@@ -1,0 +1,193 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 5,
+    "identityHash": "d21fd4978694a77c59e9f040da01fe18",
+    "entities": [
+      {
+        "tableName": "subreddit_submission",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`redditId` TEXT NOT NULL, `subreddit` TEXT NOT NULL, `author` TEXT, `title` TEXT, `submissionScore` INTEGER, `commentCount` INTEGER, `postHint` TEXT, `isSelfPost` INTEGER NOT NULL, `selfPost` TEXT, `hasThumbnail` INTEGER NOT NULL, `thumbnail` TEXT, `previewUrl` TEXT, `previewHeight` INTEGER NOT NULL, `previewWidth` INTEGER NOT NULL, `videoUrl` TEXT, `videoHeight` INTEGER NOT NULL, `videoWidth` INTEGER NOT NULL, `linkUrl` TEXT, PRIMARY KEY(`redditId`, `subreddit`))",
+        "fields": [
+          {
+            "fieldPath": "redditId",
+            "columnName": "redditId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subreddit",
+            "columnName": "subreddit",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "submissionScore",
+            "columnName": "submissionScore",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "commentCount",
+            "columnName": "commentCount",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "postHint",
+            "columnName": "postHint",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isSelfPost",
+            "columnName": "isSelfPost",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "selfPost",
+            "columnName": "selfPost",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hasThumbnail",
+            "columnName": "hasThumbnail",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnail",
+            "columnName": "thumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "previewUrl",
+            "columnName": "previewUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "previewHeight",
+            "columnName": "previewHeight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previewWidth",
+            "columnName": "previewWidth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoUrl",
+            "columnName": "videoUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoHeight",
+            "columnName": "videoHeight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoWidth",
+            "columnName": "videoWidth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "linkUrl",
+            "columnName": "linkUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "redditId",
+            "subreddit"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "submission_comment",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`submissionId` TEXT NOT NULL, `commentNumber` INTEGER NOT NULL, `commentDepth` INTEGER NOT NULL, `commentAuthor` TEXT, `comment` TEXT, `commentScore` INTEGER NOT NULL, `whenLogged` TEXT, PRIMARY KEY(`submissionId`, `commentNumber`))",
+        "fields": [
+          {
+            "fieldPath": "submissionId",
+            "columnName": "submissionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commentNumber",
+            "columnName": "commentNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commentDepth",
+            "columnName": "commentDepth",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commentAuthor",
+            "columnName": "commentAuthor",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "comment",
+            "columnName": "comment",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "commentScore",
+            "columnName": "commentScore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "whenLogged",
+            "columnName": "whenLogged",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "submissionId",
+            "commentNumber"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d21fd4978694a77c59e9f040da01fe18\")"
+    ]
+  }
+}

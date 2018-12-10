@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="za.co.pitman.readerforreddit"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+  <application
+      android:allowBackup="true"
+      android:hardwareAccelerated="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/Theme.reader_for_reddit">
+
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <activity android:name="za.co.pitman.readerforreddit.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <activity
+        android:name="za.co.pitman.readerforreddit.ViewSubredditActivity"
+        android:parentActivityName="za.co.pitman.readerforreddit.MainActivity"
+        android:launchMode="singleTop">
+      <!-- https://stackoverflow.com/questions/20819019/why-is-ondestroy-always-called-when-returning-to-parent-activity -->
+
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value="za.co.pitman.readerforreddit.MainActivity"/>
+    </activity>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <activity
+        android:name="za.co.pitman.readerforreddit.ViewSubmissionActivity"
+        android:parentActivityName="za.co.pitman.readerforreddit.ViewSubredditActivity">
+
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value="za.co.pitman.readerforreddit.ViewSubredditActivity"/>
+    </activity>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <activity
+        android:name="za.co.pitman.readerforreddit.SelectSubredditsActivity"
+        android:parentActivityName="za.co.pitman.readerforreddit.MainActivity">
+
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value="za.co.pitman.readerforreddit.MainActivity"/>
+    </activity>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <receiver android:name="za.co.pitman.readerforreddit.widget.ReaderForRedditWidgetProvider">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+    </intent-filter>
+
+      <meta-data
+          android:name="android.appwidget.provider"
+          android:resource="@xml/reddit_reader_widget_provider_info"/>
+    </receiver>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <service
+        android:name="za.co.pitman.readerforreddit.widget.ReaderForRedditWidgetRemoteViewsService"
+        android:exported="false"
+        android:permission="android.permission.BIND_REMOTEVIEWS"/>
+  </application>
+
+</manifest>
