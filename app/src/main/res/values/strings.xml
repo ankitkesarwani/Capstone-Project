@@ -122,4 +122,5 @@
     <!-- Fragment tags -->
     <string name="subreddit_submission_tag">SUBREDDIT_SUBMISSION_TAG</string>
     <string name="subreddit_listing_tag">SUBREDDIT_LISTING_TAG</string>
+    <string name="not_available">Not Available</string>
 </resources>

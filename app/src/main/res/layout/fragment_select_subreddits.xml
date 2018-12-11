@@ -34,6 +34,7 @@
                 android:nextFocusRight="@id/add_subreddit_submit_button"
                 android:nextFocusDown="@id/add_subreddit_submit_button"
                 android:autofillHints="@string/select_subreddit_autofill_hint"
+                android:labelFor="@id/add_subreddit_submit_button"
                 android:freezesText="true"/>
 
             <Button
